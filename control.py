@@ -131,16 +131,20 @@ class MatplotlibWidget(QMainWindow):
 
     def checksumTest(self):
         fileName = self.lineEdit.text()
-        with open(fileName,'rb') as check1:
-            data1 = check1.read()
-            first_md5 = hashlib.md5(data1).hexdigest()
-        with open("noise.txt") as check2:
-            data2 = check2.read()
-            second_md5 = hashlib.md5(data2).hexdigest()
-        if firstmd5 == second_md5:
+
+        check1 = open(fileName,'rb')
+        data1 = check1.read()
+        first_md5 = hashlib.md5(data1).hexdigest()
+
+        check2 = open("noise.txt", 'rb')
+        data2 = check2.read()
+        second_md5 = hashlib.md5(data2).hexdigest()
+
+        if first_md5 == second_md5:
             self.checksumLabel.setText("No errors detected")
         else:
             self.checksumLabel.setText("Errors detected")
+            
     def crcTest(self):
         prev = 0
         path1 = self.lineEdit.text()
