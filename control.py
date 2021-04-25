@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import*
 from PyQt5 import uic,QtWidgets,QtGui
 import numpy as np
-import signalOperators as sop 
+import signalOperators as sop
+import hashlib
+import zlib
 #class for main window operations
 class TextScreen(QDialog):
     def __init__(self):
@@ -128,9 +130,33 @@ class MatplotlibWidget(QMainWindow):
         self.updateGraph()
 
     def checksumTest(self):
-        self.checksumLabel.setText("Equals")
+        fileName = self.lineEdit.text()
+        with open(fileName,'rb') as check1:
+            data1 = check1.read()
+            first_md5 = hashlib.md5(data1).hexdigest()
+        with open("noise.txt") as check2:
+            data2 = check2.read()
+            second_md5 = hashlib.md5(data2).hexdigest()
+        if firstmd5 == second_md5:
+            self.checksumLabel.setText("No errors detected")
+        else:
+            self.checksumLabel.setText("Errors detected")
     def crcTest(self):
-        self.crcLabel.setText("Equals")
+        prev = 0
+        path1 = self.lineEdit.text()
+        path2 = "noise.txt"
+        for eachLine in open(path1,"rb"):
+            prev = zlib.crc32(eachLine, prev)
+        first_crc = "%X"%(prev & 0xFFFFFFFF)
+        prev = 0
+        for eachLine in open(path2,"rb"):
+            prev = zlib.crc32(eachLine, prev)
+        second_crc = "%X"%(prev & 0xFFFFFFFF)
+
+        if first_crc == second_crc:
+            self.crcLabel.setText("No errors detected")
+        else:
+            self.crcLabel.setText("Errors detected")
 
 app = QApplication([])#define application
 w = MatplotlibWidget()#define window, in this case "Main Window"

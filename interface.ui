@@ -301,7 +301,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>16777215</width>
              <height>20</height>
             </size>
            </property>
@@ -322,20 +322,26 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>110</width>
              <height>20</height>
             </size>
            </property>
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>10</pointsize>
+             <pointsize>8</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Waiting...</string>
+            <string>Waiting..</string>
            </property>
           </widget>
          </widget>
@@ -352,7 +358,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>16777215</width>
              <height>20</height>
             </size>
            </property>
@@ -373,16 +379,22 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>110</width>
              <height>20</height>
             </size>
            </property>
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>10</pointsize>
+             <pointsize>8</pointsize>
             </font>
            </property>
            <property name="text">
