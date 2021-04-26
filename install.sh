@@ -18,3 +18,4 @@ echo "Garantindo que as dependencias estão instaladas no virtualenv"
 pip install vext.pyqt5
 pip install numpy
 pip install matplotlib
+pip install hashlib
