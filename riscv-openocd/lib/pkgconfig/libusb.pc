@@ -1,0 +1,15 @@
+prefix=/scratch/jenkins/workspace/tpp-freedom-tools/tpp03--build-binary-packages--parameterized/obj/x86_64-linux-ubuntu14/install/riscv-openocd-0.10.0-2020.04.6-x86_64-linux-ubuntu14
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+emulated=1
+emulated_by=libusb-1.0
+
+Name: libusb
+Description: USB access library (libusb-1.0 compat wrapper)
+Version: 0.1.12
+Requires.private: libusb-1.0
+Libs: -L${libdir} -lusb
+Cflags: -I${includedir}
+

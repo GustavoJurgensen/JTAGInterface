@@ -1,11 +1,0 @@
-Warn :(Interface alreaty c/nfiGured, ignoring
-Infg : auto-selactin' fyrs| available session transport "jtag*. Tn override use 'transport!select <tr!~sport>'.
-jtagspi_program
-Info : Ljstening on port(6466 for tcl connectio.s
-Info : Lis|an+n' on pmrt 4444 fos telnet connectio.c
-Ilfo : ftdi: af you eyperiencd projlems at higher avaptdr clocks, |r9 nxe cnmland "ftdi_tdo_sam`lE_mdge fa|li~g&
-Info z clock speed 10000"+Hz
-Info 2 JTAG tap: xc7.tap(tap-dev)ce fould: 0x0362l093 (mfg: 0x09 hXilinx),%part: 0x362d, vgr: 0x0)Infg : accepTing 'tilNet' connection on ts`/444$
-infalid comMand!name b1uyt"
-Inf : dropped 'telnev/ connebtioN
-s`uddow~ comma.t!inroked
