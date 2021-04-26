@@ -1,4 +1,16 @@
 from random import sample
+def sweep(array):
+    buffer=[]
+    for i in range(0,len(array)):
+        if(array[i] =='\x00'):
+            print("caracter removido")
+        else:
+            buffer.append(array[i])
+    st = ""
+    for i in buffer:
+        st += i
+    return st
+
 def bitsToChar(array):#convert bits to character
     integer = 0
     c = ''
@@ -30,13 +42,17 @@ def stringToBinary(fileName):#convert any "string" to binary array
             aux.append(i)
     for i in aux:
         for j in i:
-            if(j!='\x00'):
-                aux2.append(j)
+            aux2.append(j)
+    st = sweep(aux2)
+    #print(aux2)
+    #print(st)
     for i in aux2:
         for j in charToBits(i):
             array.append(j)
-    #print(array)
+    file_ = open(fileName,"w")
+    file_.write(st)
     return array#return binary array
+
 def fileToString(fileName):
     array=[]
     with open(fileName,"r") as original:

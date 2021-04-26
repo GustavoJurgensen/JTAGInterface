@@ -67,15 +67,15 @@ class MatplotlibWidget(QMainWindow):
             value = self.slider.value()#slide bar value
             self.labelSlider.setText(str(value))#print on interface
 
-            #plot original signal graph
+                #plot original signal graph
             before = sop.convertToSquare(self.Mbefore[value])#convert to square wave
             xb = np.arange(0,len(before))
             self.graph1.canvas.axes.clear()
             self.graph1.canvas.axes.plot(xb, before)
             self.graph1.canvas.axes.set_title('Before JTAG')
             self.graph1.canvas.draw()
-            
-            #plot encoded signal graph
+                
+                #plot encoded signal graph
             after = sop.convertToSquare(self.Mafter[value])
             xa = np.arange(0,len(after))
             self.graph2.canvas.axes.clear()
@@ -105,10 +105,10 @@ class MatplotlibWidget(QMainWindow):
             after=[]
             noise=[]
 
-            #converts txt to binaries
+                #converts txt to binaries
             before,after = sop.convert_txt(fileName)
-            
-            #Assignment of matrices for each point on the slide bar 0-100
+                
+                #Assignment of matrices for each point on the slide bar 0-100
             buffer =[]
             for i in range(0,len(before)):
                 buffer.append(before[i])
@@ -121,15 +121,15 @@ class MatplotlibWidget(QMainWindow):
                 if ((i%int(len(after)/100)==0)and i>0) or i==(len(after)-1):
                     self.Mafter.append(buffer)
                     buffer =[]
-            
+                
             noise = after
             if self.checkBox.isChecked():#verify noise checkBox
                 inputTextNoise = self.noise_input.text()
             else:
                 inputTextNoise = 0
             noise = sop.add_noise(noise,float(inputTextNoise))
-            
-            #write signal in new file txt with noise
+                
+                #write signal in new file txt with noise
             sop.writeNoise(noise)
 
             buffer =[]
@@ -138,7 +138,7 @@ class MatplotlibWidget(QMainWindow):
                 if ((i%int(len(noise)/100)==0)and i>0) or i==(len(noise)-1):
                     self.Mnoise.append(buffer)
                     buffer =[] 
-            #start graph in position 0            
+                #start graph in position 0            
             self.updateGraph()
         except:
             print("ERROR: Filename or noise percentage undefined when generating square wave")
