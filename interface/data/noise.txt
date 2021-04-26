@@ -13,5 +13,6 @@ shutdown command invoked
 Open On-Chip Debugger
 
 > jtag names s
+xc7.tap
 
 > exit
