@@ -30,7 +30,8 @@ def stringToBinary(fileName):#convert any "string" to binary array
             aux.append(i)
     for i in aux:
         for j in i:
-            aux2.append(j)
+            if(j!='\x00'):
+                aux2.append(j)
     for i in aux2:
         for j in charToBits(i):
             array.append(j)
