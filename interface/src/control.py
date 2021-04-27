@@ -25,7 +25,18 @@ class TextScreen(QDialog):
         self.textBrowser_2.clear()
         for i in text2:    
             self.textBrowser_2.append(i)
-        
+
+class ErrorScreen(QDialog):
+    def __init__(self):
+        super(ErrorScreen,self).__init__()
+        uic.loadUi("errorScreen.ui",self)#load file of Qt Designer (textScreen)
+
+        self.setWindowTitle("Error")#set title window
+        self.setWindowIcon(QtGui.QIcon("../img/error.png"))#det icon window
+    
+    def printErrror(self, st):
+        self.label_2.setText(st)
+
 
 class MatplotlibWidget(QMainWindow):
     #binary matrices for slide bar
@@ -54,13 +65,17 @@ class MatplotlibWidget(QMainWindow):
         self.crc.clicked.connect(self.crcTest)
         self.comparative.clicked.connect(self.openTextScreen)
 
+    def openErrorScreen(self,st):
+        errorWindow.printErrror(st)
+        errorWindow.show()
+
     def openTextScreen(self):
         try:
             fileName = "../data/" + self.lineEdit.text()
             newWindow.makeText(fileName)
             newWindow.show()
         except:
-            print("ERROR: Filename or noise file undefined when raw files")
+            self.openErrorScreen("ERROR: Filename or noise file undefined when raw files")
 
     def updateGraph(self):#Update the graphs according to the slide bar
         try:
@@ -91,7 +106,7 @@ class MatplotlibWidget(QMainWindow):
                 self.graph3.canvas.axes.set_title('After Noise')
                 self.graph3.canvas.draw()
         except:
-            print("ERROR: Undefined square wave before trying to slide through it")
+            self.openErrorScreen("ERROR: Undefined square wave before trying to slide through it")
 
     def createGraph(self):
         # Generate needs percentage and fileName to be defined
@@ -141,7 +156,7 @@ class MatplotlibWidget(QMainWindow):
                 #start graph in position 0            
             self.updateGraph()
         except:
-            print("ERROR: Filename or noise percentage undefined when generating square wave")
+            self.openErrorScreen("ERROR: Filename or noise percentage undefined when generating square wave")
 
 
     def checksumTest(self):
@@ -161,7 +176,7 @@ class MatplotlibWidget(QMainWindow):
             else:
                 self.checksumLabel.setText("Errors detected")
         except:
-            print("ERROR: Filename or noise not generated when verifing errors using checksum")
+            self.openErrorScreen("ERROR: Filename or noise not generated when verifing errors using checksum")
             
     def crcTest(self):
         try:
@@ -181,10 +196,11 @@ class MatplotlibWidget(QMainWindow):
             else:
                 self.crcLabel.setText("Errors detected")
         except:
-            print("ERROR: Filename or noise not generated when verifing errors using CRC32")
+            self.openErrorScreen("ERROR: Filename or noise not generated when verifing errors using CRC32")
 
 app = QApplication([])#define application
 w = MatplotlibWidget()#define window, in this case "Main Window"
 newWindow = TextScreen()
+errorWindow = ErrorScreen()
 w.show()# show window
 app.exec_()#execute app
