@@ -75,7 +75,7 @@ class MatplotlibWidget(QMainWindow):
             newWindow.makeText(fileName)
             newWindow.show()
         except:
-            self.openErrorScreen("ERROR: Filename or noise file undefined when raw files")
+            self.openErrorScreen("ERROR: Original or noise file not found when comparing.")
 
     def updateGraph(self):#Update the graphs according to the slide bar
         try:
@@ -106,7 +106,7 @@ class MatplotlibWidget(QMainWindow):
                 self.graph3.canvas.axes.set_title('After Noise')
                 self.graph3.canvas.draw()
         except:
-            self.openErrorScreen("ERROR: Undefined square wave before trying to slide through it")
+            self.openErrorScreen("ERROR: Generate a square wave before trying to slide through it.")
 
     def createGraph(self):
         # Generate needs percentage and fileName to be defined
@@ -176,7 +176,7 @@ class MatplotlibWidget(QMainWindow):
             else:
                 self.checksumLabel.setText("Errors detected")
         except:
-            self.openErrorScreen("ERROR: Filename or noise not generated when verifing errors using checksum")
+            self.openErrorScreen("ERROR: Original or noise file not generated before verifing errors using checksum")
             
     def crcTest(self):
         try:
@@ -196,7 +196,7 @@ class MatplotlibWidget(QMainWindow):
             else:
                 self.crcLabel.setText("Errors detected")
         except:
-            self.openErrorScreen("ERROR: Filename or noise not generated when verifing errors using CRC32")
+            self.openErrorScreen("ERROR: Original or noise file not generated before verifing errors using CRC32")
 
 app = QApplication([])#define application
 w = MatplotlibWidget()#define window, in this case "Main Window"

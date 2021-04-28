@@ -1,0 +1,10 @@
+matplotlib==3.3.4
+numpy==1.19.5
+Pillow==8.2.0
+python-qt-binding==0.4.3
+qt-dotgraph==0.4.2
+qt-gui==0.4.2
+qt-gui-cpp==0.4.2
+qt-gui-py-common==0.4.2
+vext==0.7.6
+vext.pyqt5==0.7.4

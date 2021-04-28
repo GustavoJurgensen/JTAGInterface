@@ -10,11 +10,10 @@ sudo apt-get install qttools5-dev-tools
 echo "Instalando virtualenv"
 pip install virtualenv
 
-echo "Entrando no ambiente virtualenv"
+echo "Entrando no virtualenv"
+python3 -m venv venv
 pwd=$PWD
 source "$pwd/venv/bin/activate"
 
-echo "Garantindo que as dependencias estão instaladas no virtualenv"
-pip install vext.pyqt5
-pip install numpy
-pip install matplotlib
+echo "Instalando as dependencias no virtualenv"
+pip install -r requirements.txt
