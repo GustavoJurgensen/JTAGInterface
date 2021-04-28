@@ -106,7 +106,7 @@ class MatplotlibWidget(QMainWindow):
                 self.graph3.canvas.axes.set_title('After Noise')
                 self.graph3.canvas.draw()
         except:
-            self.openErrorScreen("ERROR: Generate a square wave before trying to slide through it.")
+            self.openErrorScreen("ERROR: Generate a digital signal before trying to slide through it.")
 
     def createGraph(self):
         # Generate needs percentage and fileName to be defined
@@ -156,7 +156,7 @@ class MatplotlibWidget(QMainWindow):
                 #start graph in position 0            
             self.updateGraph()
         except:
-            self.openErrorScreen("ERROR: Filename or noise percentage undefined when generating square wave")
+            self.openErrorScreen("ERROR: Filename or noise percentage undefined when generating digital signal")
 
 
     def checksumTest(self):
